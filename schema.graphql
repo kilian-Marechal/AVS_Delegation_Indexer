@@ -1,0 +1,48 @@
+type OperatorSharesDecreased @entity(immutable: true) {
+  id: Bytes!
+  operator: Bytes! # address
+  staker: Bytes! # address
+  strategy: Bytes! # address
+  shares: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OperatorSharesIncreased @entity(immutable: true) {
+  id: Bytes!
+  operator: Bytes! # address
+  staker: Bytes! # address
+  strategy: Bytes! # address
+  shares: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StakerDelegated @entity(immutable: true) {
+  id: Bytes!
+  staker: Bytes! # address
+  operator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StakerForceUndelegated @entity(immutable: true) {
+  id: Bytes!
+  staker: Bytes! # address
+  operator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StakerUndelegated @entity(immutable: true) {
+  id: Bytes!
+  staker: Bytes! # address
+  operator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

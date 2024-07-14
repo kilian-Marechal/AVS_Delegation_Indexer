@@ -1,0 +1,39 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: EigenLayer_Delegation_Manager
+    network: mainnet
+    source:
+      address: "0x1784BE6401339Fc0Fedf7E9379409f5c1BfE9dda"
+      abi: EigenLayer_Delegation_Manager
+      startBlock: 19492759
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OperatorSharesDecreased
+        - OperatorSharesIncreased
+        - StakerDelegated
+        - StakerForceUndelegated
+        - StakerUndelegated
+      abis:
+        - name: EigenLayer_Delegation_Manager
+          file: ./abis/EigenLayer_Delegation_Manager.json
+      eventHandlers:
+        - event: OperatorSharesDecreased(indexed address,address,address,uint256)
+          handler: handleOperatorSharesDecreased
+        - event: OperatorSharesIncreased(indexed address,address,address,uint256)
+          handler: handleOperatorSharesIncreased
+        - event: StakerDelegated(indexed address,indexed address)
+          handler: handleStakerDelegated
+        - event: StakerForceUndelegated(indexed address,indexed address)
+          handler: handleStakerForceUndelegated
+        - event: StakerUndelegated(indexed address,indexed address)
+          handler: handleStakerUndelegated
+
+      file: ./src/eigen-layer-delegation-manager.ts
